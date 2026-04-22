@@ -1,0 +1,230 @@
+name: SNOWRETAIL_SV
+tables:
+  - name: MART_SALES
+    description: ECと実店舗を統合した月次売上集計テーブル。チャネル別・カテゴリ別の売上分析に使用する。
+    base_table:
+      database: SNOWRETAIL_DB
+      schema: SNOWRETAIL_SCHEMA
+      table: MART_SALES
+    primary_key:
+      columns:
+        - PRODUCT_ID
+        - CHANNEL
+        - SALE_MONTH
+    dimensions:
+      - name: PRODUCT_ID
+        synonyms:
+          - 商品ID
+          - 商品コード
+        description: 商品を一意に識別するID
+        data_type: TEXT
+        expr: PRODUCT_ID
+        sample_values:
+          - P001
+          - P010
+          - P050
+      - name: PRODUCT_NAME
+        synonyms:
+          - 商品名
+          - 商品
+          - アイテム名
+        description: 商品の表示名称
+        data_type: TEXT
+        expr: PRODUCT_NAME
+        sample_values:
+          - 有機野菜セット
+          - プレミアムコーヒー豆
+      - name: CATEGORY
+        synonyms:
+          - カテゴリ
+          - 商品カテゴリ
+          - 分類
+        description: 商品のカテゴリ分類
+        data_type: TEXT
+        expr: CATEGORY
+        sample_values:
+          - 食品
+          - 飲料
+          - 日用品
+      - name: CHANNEL
+        synonyms:
+          - チャネル
+          - 販売チャネル
+          - 販路
+        description: 販売チャネル（ECまたは実店舗）
+        data_type: TEXT
+        expr: CHANNEL
+        sample_values:
+          - EC
+          - 実店舗
+    time_dimensions:
+      - name: SALE_MONTH
+        synonyms:
+          - 売上月
+          - 月
+          - 販売月
+        description: 売上の月次集計単位（DATE_TRUNC('MONTH')で集計済み）
+        data_type: DATE
+        expr: SALE_MONTH
+    facts:
+      - name: QUANTITY
+        synonyms:
+          - 数量
+          - 販売数量
+          - 個数
+        description: 販売数量
+        data_type: NUMBER
+        expr: QUANTITY
+      - name: AMOUNT
+        synonyms:
+          - 売上金額
+          - 金額
+          - 売上
+        description: 売上金額
+        data_type: NUMBER
+        expr: AMOUNT
+    metrics:
+      - name: TOTAL_AMOUNT
+        synonyms:
+          - 売上合計
+          - 総売上
+          - 売上総額
+        description: 売上金額の合計
+        expr: SUM(AMOUNT)
+      - name: TOTAL_QUANTITY
+        synonyms:
+          - 数量合計
+          - 総数量
+          - 販売数量合計
+        description: 販売数量の合計
+        expr: SUM(QUANTITY)
+      - name: AVG_AMOUNT
+        synonyms:
+          - 平均単価
+          - 平均売上
+          - 平均金額
+        description: 売上金額の平均値
+        expr: AVG(AMOUNT)
+    filters:
+      - name: EC_ONLY
+        synonyms:
+          - EC限定
+          - ECのみ
+          - オンラインのみ
+        description: ECチャネルのデータのみに絞り込む
+        expr: CHANNEL = 'EC'
+      - name: STORE_ONLY
+        synonyms:
+          - 実店舗限定
+          - 店舗のみ
+        description: 実店舗チャネルのデータのみに絞り込む
+        expr: CHANNEL = '実店舗'
+
+  - name: CUSTOMER_REVIEWS
+    description: 顧客レビューデータ。商品に対する評価・レビューテキスト・購入チャネル情報を含む。
+    base_table:
+      database: SNOWRETAIL_DB
+      schema: SNOWRETAIL_SCHEMA
+      table: CUSTOMER_REVIEWS
+    primary_key:
+      columns:
+        - REVIEW_ID
+    dimensions:
+      - name: REVIEW_ID
+        synonyms:
+          - レビューID
+        description: レビューを一意に識別するID
+        data_type: TEXT
+        expr: REVIEW_ID
+        sample_values:
+          - R001
+          - R010
+          - R030
+      - name: PRODUCT_ID
+        synonyms:
+          - 商品ID
+          - 商品コード
+        description: レビュー対象の商品ID
+        data_type: TEXT
+        expr: PRODUCT_ID
+        sample_values:
+          - P026
+          - P056
+          - P004
+      - name: CUSTOMER_ID
+        synonyms:
+          - 顧客ID
+          - カスタマーID
+        description: レビューを書いた顧客のID
+        data_type: TEXT
+        expr: CUSTOMER_ID
+        sample_values:
+          - C0078
+          - C0010
+          - C0252
+      - name: REVIEW_TEXT
+        synonyms:
+          - レビュー内容
+          - レビュー本文
+          - 口コミ
+        description: 顧客が記入したレビューテキスト
+        data_type: TEXT
+        expr: REVIEW_TEXT
+      - name: PURCHASE_CHANNEL
+        synonyms:
+          - 購入チャネル
+          - 購入経路
+        description: レビュー対象商品の購入チャネル
+        data_type: TEXT
+        expr: PURCHASE_CHANNEL
+        sample_values:
+          - 店舗
+          - EC
+    time_dimensions:
+      - name: REVIEW_DATE
+        synonyms:
+          - レビュー日
+          - レビュー投稿日
+          - 評価日
+        description: レビューが投稿された日時
+        data_type: TIMESTAMP
+        expr: REVIEW_DATE
+    facts:
+      - name: RATING
+        synonyms:
+          - 評価
+          - 星
+          - レーティング
+        description: 商品に対する5段階評価（1.0〜5.0）
+        data_type: NUMBER
+        expr: RATING
+      - name: HELPFUL_VOTES
+        synonyms:
+          - 参考になった数
+          - いいね数
+          - 役立ち投票数
+        description: 他の顧客から「参考になった」と評価された回数
+        data_type: NUMBER
+        expr: HELPFUL_VOTES
+    metrics:
+      - name: AVG_RATING
+        synonyms:
+          - 平均評価
+          - 平均レーティング
+          - 平均星
+        description: 商品評価の平均値
+        expr: AVG(RATING)
+      - name: REVIEW_COUNT
+        synonyms:
+          - レビュー件数
+          - レビュー数
+          - 口コミ数
+        description: レビューの総件数
+        expr: COUNT(REVIEW_ID)
+      - name: TOTAL_HELPFUL_VOTES
+        synonyms:
+          - 参考になった合計
+          - いいね合計
+        description: 「参考になった」投票の合計数
+        expr: SUM(HELPFUL_VOTES)
+
