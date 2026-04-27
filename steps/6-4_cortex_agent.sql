@@ -4,24 +4,34 @@ FROM SPECIFICATION $$
   "models": {
     "orchestration": "auto"
   },
+  "orchestration": {
+    "budget": {
+      "seconds": 900,
+      "tokens": 400000
+    }
+  },
+  "instructions": {
+    "orchestration": "あなたはスノーリテールの分析アシスタントです。売上データの分析にはquery_sales_dataツールを、社内ドキュメント（マニュアル、ガイドライン等）の検索にはsearch_docsツールを使用してください。質問の内容に応じて適切なツールを選択し、日本語で回答してください。",
+    "response": "回答は日本語で、簡潔かつわかりやすく行ってください。データに基づく分析結果には具体的な数値を含めてください。"
+  },
   "tools": [
     {
       "tool_spec": {
         "type": "cortex_analyst_text_to_sql",
-        "name": "query_snowretail",
-        "description": "売上データやレビューデータに対する自然言語での問い合わせを、SQLに変換して実行します。カテゴリ別売上、チャネル比較、月次推移、商品評価などの分析が可能です。"
+        "name": "query_sales_data",
+        "description": "MART_SALESとCUSTOMER_REVIEWSのデータを使って、売上分析やカテゴリ別集計、チャネル比較、顧客レビュー分析などを行うツール"
       }
     },
     {
       "tool_spec": {
         "type": "cortex_search",
         "name": "search_docs",
-        "description": "社内ドキュメント（業務マニュアル、FAQ、運用ガイドなど）を検索します。データの定義や業務ルールに関する質問に回答します。"
+        "description": "スノーリテールの社内ドキュメント（店舗運営マニュアル、商品開発ガイドライン、販売戦略資料など）を検索するツール"
       }
     }
   ],
   "tool_resources": {
-    "query_snowretail": {
+    "query_sales_data": {
       "execution_environment": {
         "query_timeout": 299,
         "type": "warehouse",
