@@ -90,6 +90,17 @@ create or replace TABLE SNOW_RETAIL_DOCUMENTS (
 	VERSION NUMBER(38,1)
 );
 
+create or replace TABLE CUSTOMER_REVIEWS (
+	REVIEW_ID VARCHAR(16777216),
+	PRODUCT_ID VARCHAR(16777216),
+	CUSTOMER_ID VARCHAR(16777216),
+	RATING NUMBER(38,1),
+	REVIEW_TEXT VARCHAR(16777216),
+	REVIEW_DATE TIMESTAMP_NTZ(9),
+	PURCHASE_CHANNEL VARCHAR(16777216),
+	HELPFUL_VOTES NUMBER(38,0)
+);
+
 -- Step2: データロード
 create or replace temp file format temp_ff
     type = csv
@@ -117,8 +128,12 @@ from @FILE
 file_format = (format_name = temp_ff)
 files = ('retail_data.csv');
 
+copy into CUSTOMER_REVIEWS
+from @FILE
+file_format = (format_name = temp_ff)
+files = ('customer_reviews.csv');
+
 copy into SNOW_RETAIL_DOCUMENTS
 from @FILE
 file_format = (format_name = temp_ff_2)
 files = ('snow_retail_documents.csv');
-
