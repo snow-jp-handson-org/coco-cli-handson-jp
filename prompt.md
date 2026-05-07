@@ -186,7 +186,7 @@ data-quality-checker Custom Agent をバックグラウンドで起動して、#
 
 期待される応答: Custom Agent をバックグラウンドで起動した旨の応答が返ります。実行が完了するとデータ品質のサマリレポートが返ります。
 
-- 4-4. 走っている Agent を `/agents` で一覧表示
+- 4-4. `/agents` で Agent の一覧表示をした後、TABキーで実行中の Subagent を確認
 
 ```
 /agents
