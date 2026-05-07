@@ -9,15 +9,40 @@
 2. CLI 上のテキストボックスにプロンプトを貼り付けて Enter
 
 ---
-## Step 0: データ準備
+## Step 0: 環境、データ準備
 
 ### 目的
 本ハンズオン用サンプルデータの初期構築タスクの実行
 
-### プロンプト
+### コマンド
 
-- 0-0. Snowflake CLI での SQL ファイル実行
+- 0-1. Snowflake CLI インストール確認
 ```
+snow --version
+```
+
+- 0-2. Snowflake CLI 接続確認
+```
+snow connection list
+
+snow connection test -c <接続名>
+```
+
+- 0-3. Cortex Code CLI インストール確認
+```
+cortex --version
+```
+
+- 0-4. Cortex Code CLI 起動
+```
+cortex
+
+cortex -w <作業ディレクトリ>
+```
+
+- 0-5. Cortex Code CLI から Snowflake CLI による SQL ファイル実行
+```
+/sh
 snow sql -f setup.sql
 ```
 
@@ -63,8 +88,24 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA のデータ構造の問題点は何か、改善
 データ構造の問題点を解消するため、テーブルを結合・集計してデータマート用 Dynamic Table を作成する
 
 ### プロンプト
+
+- 2-1. Dynamic Table作成計画の立案
 ```
-MART_SALESという名前でDynamic Tableを作成したい。また、作成にあたって商品名から類推してカテゴリ、ブランドのカラムも追加したい。
+MART_SALESという名前でDynamic Tableを作成したい。まずは計画を立てて。
+```
+
+- 2-2. 計画の確認、修正、実行
+```
+#EC_DATA #RETAIL_DATA #PRODUCT_MASTER を使って
+
+商品名から類推してカテゴリ、ブランドのカラムを追加して
+
+TARGET_LAGを1日にして
+```
+
+-2-3. 生成テーブルの確認
+```
+#MART_SALES 作成されたテーブルの件数と構造を確認して
 ```
 
 ---
@@ -75,6 +116,11 @@ MART_SALESという名前でDynamic Tableを作成したい。また、作成に
 AGENTS.mdの Before/After 比較でソフトガバナンスの効果を体感する。
 
 ### プロンプト
+
+- 3-0. 新しいセッションを作成（ここまでの文脈をリセット）
+```
+/new
+```
 
 - 3-1. Before（AGENTS.mdなし）の動作確認
 ```

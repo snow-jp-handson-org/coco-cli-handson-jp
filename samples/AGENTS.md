@@ -1,4 +1,4 @@
-# GlacierStyle プロジェクトルール
+# SnowRetail プロジェクトルール
 
 ## プロジェクト概要
 
