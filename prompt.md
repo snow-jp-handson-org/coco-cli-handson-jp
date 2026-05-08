@@ -364,7 +364,7 @@ streamlit_app.py を読んで、現状何が表示されるか説明して
 
 - 8-3. Snowflakeへのデプロイ
 ```
-では編集したstreamlit_app.pyを使用してstreamlitをデプロイしてください。
+steps/streamlit にある snowflake.yml を使って Streamlit をデプロイしてください。environment.yml の plotly 依存も含めてください。
 ```
 
 - 8-4. デプロイ後の追加カスタマイズ（余力がある場合）
