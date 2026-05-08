@@ -405,7 +405,7 @@ draw.io MCPに接続する方法を教えて
 - 9-2. ER図の作成
 ```
 #EC_DATA #RETAIL_DATA #PRODUCT_MASTER #MART_SALES #CUSTOMER_REVIEWS #SNOW_RETAIL_DOCUMENTS
-これらのテーブルの関係をdraw.ioでER図として可視化して
+draw.io MCPを使って、これらのテーブルの関係をER図として可視化して
 ```
 
 ---
