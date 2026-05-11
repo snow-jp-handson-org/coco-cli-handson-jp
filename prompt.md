@@ -334,7 +334,7 @@ Skillの構造を理解し、カスタマイズして再実行する。チーム
 
 - 7-1. Skillの構造確認
 ```
-monthly-sales-reportのSKILL.mdを読んで、このSkillが何をするものか、どんな手順で動くか説明して
+@.cortex/skills/monthly-sales-report/SKILL.md を読んで、このSkillが何をするものか、どんな手順で動くか説明して
 ```
 
 - 7-2. Skillを実行
