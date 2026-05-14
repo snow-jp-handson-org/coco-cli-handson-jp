@@ -309,7 +309,7 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.SNOWRETAIL_SV という名前でSemantic Viewを
 
 - 6-2. cortex reflectで検証・デプロイ
 ```
-@steps/6-1_snowretail_sv.yaml をreflectして
+今作成したSemantic Viewをreflectして
 ```
 
 - 6-3. Cortex Search Serviceの作成
