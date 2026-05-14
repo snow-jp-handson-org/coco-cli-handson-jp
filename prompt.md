@@ -24,7 +24,8 @@ snow --version
 - 0-2. Snowflake CLI 接続確認
 ```
 snow connection list
-
+```
+```
 snow connection test -c <接続名>
 ```
 
@@ -36,7 +37,8 @@ cortex --version
 - 0-4. Cortex Code CLI 起動
 ```
 cortex
-
+```
+```
 cortex -c <接続名> -w <作業ディレクトリ>
 ```
 
@@ -70,7 +72,8 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA この中のテーブルの概要を教えて
 - 1-4. 会話の文脈
 ```
 ECのみで、月別に分けて見せて
-
+```
+```
 ECの売上構成比を教えて
 ```
 
@@ -96,9 +99,11 @@ MART_SALES という名前で Dynamic Table を作成したい。まずは計画
 - 2-2. 計画の確認、修正、実行
 ```
 #EC_DATA #RETAIL_DATA #PRODUCT_MASTER を使って
-
+```
+```
 商品名から類推してカテゴリ、ブランドのカラムを追加して
-
+```
+```
 TARGET_LAGを1日にして
 ```
 
