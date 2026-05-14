@@ -416,11 +416,14 @@ cortex mcp list
 draw.io MCPに接続する方法を教えて
 ```
 
+```
+cortex mcp add drawio npx -- @drawio/mcp
+```
+
 - 9-2. ER図の作成
 ```
 #EC_DATA #RETAIL_DATA #PRODUCT_MASTER #MART_SALES #CUSTOMER_REVIEWS #SNOW_RETAIL_DOCUMENTS
 draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関係をER図として可視化して
-cortex mcp add -s project drawio -- npx @drawio/mcp
 ```
 
 ---
