@@ -255,6 +255,11 @@ cp samples/settings.json .cortex/settings.json
 
 > Finder や VS Code 等の GUI でコピー＆ペーストしても OK です。
 
+新しいセッションを作成（Hooks を CoCo CLI に認識させる）
+```
+/new
+```
+
 コピー後、以下で配置を確認します。
 
 ```
