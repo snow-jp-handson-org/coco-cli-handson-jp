@@ -420,6 +420,7 @@ draw.io MCPに接続する方法を教えて
 ```
 #EC_DATA #RETAIL_DATA #PRODUCT_MASTER #MART_SALES #CUSTOMER_REVIEWS #SNOW_RETAIL_DOCUMENTS
 draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関係をER図として可視化して
+mcp add -s project drawio -- npx @drawio/mcp
 ```
 
 ---
