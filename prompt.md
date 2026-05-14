@@ -386,7 +386,7 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 
 - 8-3. Snowflakeへのデプロイ
 ```
-@steps/streamlit にある snowflake.yml を使って Streamlit をデプロイしてください。environment.yml の plotly 依存も含めてください。また実際の MART_SALES のテーブル構造に従ってコードを修正してください。
+@steps/streamlit にある snowflake.yml を使って Streamlit をデプロイしてください。environment.yml の plotly 依存も含めてください。また実際の #MART_SALES のテーブル構造に従ってコードを修正してください。
 ```
 
 - 8-4. デプロイ後の追加カスタマイズ（余力がある場合）
