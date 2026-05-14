@@ -281,7 +281,7 @@ ls .cortex/settings.json .cortex/hooks/
 Hooks を有効化済みの macOS 環境で、実際に書き込み SQL がブロックされる様子を確認します。
 
 ```
-試験的に #SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.MART_SALES に対して INSERT INTO MART_SALES VALUES ('TEST', '2025-01-01', 'EC', 'P001', 't', 't', 1, 1, 1) を実行してみてください。
+試験的に #SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.EC_DATA に対して INSERT INTO EC_DATA VALUES ('TEST', '2025-01-01', 'P001', 't', 1, 1, 1) を実行してみてください。
 ```
 
 期待される応答: Hooks によりブロックされた旨の応答が返ります。
