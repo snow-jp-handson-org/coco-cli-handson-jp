@@ -437,15 +437,43 @@ draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関
 
 - 10-1. セッションの振り返り
 ```
-今日のセッションで何を作成・変更したかまとめて、profile.jsonとしてprofilesフォルダ下に出力して
+以下の Cortex Code の Profile のテンプレートに従って、今日のセッションで作成した内容 (カスタムスキル、MCP、Hooks、Connectionなど) を反映させた Profile ファイルを demo_profile.json という名前で作成してください。Profile ファイルは、.snowflake/cortex/profiles というフォルダを作成して配置して
+{
+  "name": "demo_profile",
+  "description": "",
+  "ownerTeam": "",
+  "version": "1",
+  "skillRepos": [
+    {
+      "ref": "",
+      "source": "",
+      "url": ""
+    }
+  ],
+  "mcpServers": {},
+  "commandRepos": [],
+  "systemPromptRepo": ,
+  "hooks": ,
+  "plugins": [],
+  "envVars": {},
+  "settingsOverrides": {},
+  "localModified": false,
+  "sourceConnection": "",
+  "fetchedAt": ""
+}
 ```
 
 - 10-2. Profile紹介
 ```
-profile.jsonを読んで、何がパッケージされているか説明して
+demo_profile.jsonを読んで、何がパッケージされているか説明して
 ```
 
-- 10-3. Profileの適用
+- 10-3. Profileが正常に認識されていることを確認
 ```
-cortex profile apply profile.json
+/profile list
+```
+
+- 10-4. Profileをデフォルトとして設定
+```
+/profile set-default demo_profile
 ```
