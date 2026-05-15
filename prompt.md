@@ -156,13 +156,14 @@ Cortex Code CLI のバックグラウンド実行機能を、汎用 Subagent →
 
 ### 事前確認
 
-リポジトリを clone した直後に、Custom Agent の定義ファイルが置かれていることを確認します。
+今回用意している Custom Agent の定義ファイルが認識されていることを確認します。
 
 ```
-ls .cortex/agents/data-quality-checker.md
+/agents
 ```
+期待される応答: Custom Agent を含む Subagent 一覧が表示されます。
 
-ファイルが見つからない場合は、プロジェクトルートに `cd` しているか確認してください。
+> ファイルが見つからない場合は、プロジェクトルートに `cd` しているか確認してください。
 
 ### プロンプト
 
