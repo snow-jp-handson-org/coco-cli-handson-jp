@@ -14,7 +14,7 @@
 ### 目的
 本ハンズオン用サンプルデータの初期構築タスクの実行
 
-### コマンド
+#### 以下、ターミナルで実行するコマンド
 
 - 0-1. Snowflake CLI インストール確認
 ```
@@ -241,9 +241,10 @@ Hooks のブロックスクリプトは bash 製のため、**macOS 環境での
 Windows 環境の方は 5-1（構造の読み解き）のみ実施し、5-2（発火デモ）は講師の画面で確認してください。
 
 macOS の方は、`samples/settings.json` を `.cortex/` にコピーして Hooks を有効化します。
+なお、 `!` を先頭につけることで、コマンドを透過的に実行することが可能です。
 
 ```
-cp samples/settings.json .cortex/settings.json
+!cp samples/settings.json .cortex/settings.json
 ```
 
 > Finder や VS Code 等の GUI でコピー＆ペーストしても OK です。
@@ -256,7 +257,7 @@ cp samples/settings.json .cortex/settings.json
 コピー後、以下で配置を確認します。
 
 ```
-ls .cortex/settings.json .cortex/hooks/
+!ls .cortex/settings.json .cortex/hooks/
 ```
 
 `settings.json` と `.cortex/hooks/` 配下の3本のスクリプトが見えていれば OK です。
@@ -382,7 +383,7 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 
 - 7-7. 自作Skillの実行テスト
 ```
-my-category-insight Skill を使って、「食品」カテゴリの分析レポートを出して
+/my-category-insight Skill を使って、「食品」カテゴリの分析レポートを出して
 ```
 
 期待される応答: 作成した Skill が発火し、MART_SALES から指定カテゴリの売上データを集計したマークダウンレポートが出力されます。
@@ -393,7 +394,7 @@ my-category-insight Skill を使って、「食品」カテゴリの分析レポ
 
 - 7-8. Skillの改良（参加者ごとのカスタマイズ）
 ```
-my-category-insight Skill に「競合カテゴリとの比較」セクションを追加して、SKILL.mdを更新して
+/my-category-insight Skill に「競合カテゴリとの比較」セクションを追加して、SKILL.mdを更新して
 ```
 
 期待される応答: SKILL.md のワークフローに比較ロジックのステップが追加されます。
