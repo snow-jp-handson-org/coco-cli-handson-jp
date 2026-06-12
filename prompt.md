@@ -478,52 +478,41 @@ draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関
 
 ---
 
-## Step 10: 振り返り + Profileでチームに展開
+## Step 10: 振り返り + Pluginでチームに展開
 
 ### 目的
-今日作ったものをProfileで一括配布できることを理解する。
+今日作ったもの（Skills、Hooks、MCP設定、Custom Agent）を1つの Plugin としてパッケージし、チームメンバーに一括配布できることを理解する。
+
+> **Plugin とは**: Skills、Subagents、Hooks、MCP サーバーを1つのマニフェストにまとめたパッケージ。Git リポジトリで共有するだけで `cortex plugin install` 一発でチーム全員に展開できます。
 
 ### プロンプト
 
-- 10-1. セッションの振り返り
+- 10-1. Plugin の作成
 ```
-以下の Cortex Code の Profile のテンプレートに従って、今日のセッションで作成した内容 (カスタムスキル、MCP、Hooks、Connectionなど) を反映させた Profile ファイルを demo_profile.json という名前で作成してください。Profile ファイルは、.snowflake/cortex/profiles というフォルダを作成して配置して
-{
-  "name": "demo_profile",
-  "description": "",
-  "ownerTeam": "",
-  "version": "1",
-  "skillRepos": [
-    {
-      "ref": "",
-      "source": "",
-      "url": ""
-    }
-  ],
-  "mcpServers": {},
-  "commandRepos": [],
-  "systemPromptRepo": ,
-  "hooks": ,
-  "plugins": [],
-  "envVars": {},
-  "settingsOverrides": {},
-  "localModified": false,
-  "sourceConnection": "",
-  "fetchedAt": ""
-}
+今日のセッションで作成した内容（Skills、Hooks、Custom Agent、MCP設定）を
+1つの Cortex Code Plugin としてパッケージしてください。
+Plugin名は snowretail-handson で、.cortex/plugins/ 配下に作成して。
 ```
 
-- 10-2. Profile紹介
+期待される応答: Plugin のディレクトリ構造（`.cortex-plugin/plugin.json`、skills/、agents/、hooks/ 等）とマニフェストが自動生成されます。
+
+- 10-2. Plugin の検証
 ```
-demo_profile.jsonを読んで、何がパッケージされているか説明して
+cortex plugin validate .cortex/plugins/snowretail-handson/
 ```
 
-- 10-3. Profileが正常に認識されていることを確認
+期待される応答: マニフェストと各コンポーネント（Skills、Agents、Hooks、MCP）の検証結果が表示されます。エラーがなければ OK です。
+
+- 10-3. Plugin の読み込み確認
 ```
-/profile list
+/plugin list
 ```
 
-- 10-4. Profileをデフォルトとして設定
+期待される応答: snowretail-handson Plugin が一覧に表示され、active 状態であることが確認できます。
+
+- 10-4. Plugin の共有方法を確認
 ```
-/profile set-default demo_profile
+この Plugin を Git リポジトリで共有して、チームメンバーがインストールするまでの手順を教えて
 ```
+
+期待される応答: `git push` → チームメンバーが `cortex plugin install <org>/<repo>` でインストールする流れが説明されます。
