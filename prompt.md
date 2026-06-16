@@ -440,7 +440,7 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 ```
 
 ```
-ダウンロードした画像 dashboard_template.jpg のデザインに合わせてダッシュボードを編集できますか？
+@step/streamlit にダウンロードした画像 dashboard_template.jpg のデザインに合わせてダッシュボードを編集できますか？
 ```
 
 ---
@@ -467,7 +467,7 @@ draw.io MCPに接続する方法を教えて
 ```
 
 ```
-cortex mcp add drawio npx -- @drawio/mcp
+!cortex mcp add drawio npx -- @drawio/mcp
 ```
 
 - 9-2. ER図の作成
@@ -498,19 +498,26 @@ Plugin名は snowretail-handson で、.cortex/plugins/ 配下に作成して。
 
 - 10-2. Plugin の検証
 ```
-cortex plugin validate .cortex/plugins/snowretail-handson/
+!cortex plugin validate .cortex/plugins/snowretail-handson/
 ```
 
 期待される応答: マニフェストと各コンポーネント（Skills、Agents、Hooks、MCP）の検証結果が表示されます。エラーがなければ OK です。
 
-- 10-3. Plugin の読み込み確認
+- 10-3. Plugin の再読み込み
+```
+/reload-plugins
+```
+
+期待される応答: Plugin のリストが再読み込みされること。
+
+- 10-4. Plugin の読み込み確認
 ```
 /plugin list
 ```
 
 期待される応答: snowretail-handson Plugin が一覧に表示され、active 状態であることが確認できます。
 
-- 10-4. Plugin の共有方法を確認
+- 10-5. Plugin の共有方法を確認
 ```
 この Plugin を Git リポジトリで共有して、チームメンバーがインストールするまでの手順を教えて
 ```
