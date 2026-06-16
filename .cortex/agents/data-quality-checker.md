@@ -2,7 +2,7 @@
 name: data-quality-checker
 description: SnowRetail の MART_SALES を中心としたテーブルのデータ品質を NULL率・整合性・孤立レコード・異常値の観点でチェックする専門エージェント
 tools:
-  - snowflake_sql_execute
+  - sql_execute
   - Read
   - Grep
 model: auto
