@@ -290,7 +290,7 @@ Hooks を有効化済みの macOS 環境で、実際に書き込み SQL がブ�
 ## Step 6: Semantic View + Cortex AgentsでSI構築
 
 ### 目的
-LOB（営業・マーケ等）がSnowflake Intelligence（SI）で自然言語分析できる環境を作る。
+LOB（営業・マーケ等）がSnowflake CoWork で自然言語分析できる環境を作る。
 
 ### プロンプト
 
