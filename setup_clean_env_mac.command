@@ -7,7 +7,7 @@
 #
 # === 前提条件 ===
 #   - Snowflake CLI (snow) がインストール済み
-#   - Cortex Code CLI (cortex) がインストール済み
+#   - CoCo CLI (cortex) がインストール済み
 #
 # === 起動方法 ===
 #   Finder からダブルクリック / ターミナルで bash setup_auto_mac.command
@@ -105,7 +105,7 @@ generate_pat() {
 cat <<BANNER
 
 ============================================================
- Cortex Code CLI 自動セットアップ (macOS)
+ CoCo CLI 自動セットアップ (macOS)
 ============================================================
 
 BANNER

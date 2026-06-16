@@ -10,7 +10,7 @@ REM 既存の %USERPROFILE%\.snowflake\ 配下のファイルには一切触れ�
 REM
 REM === 前提条件 ===
 REM   - Snowflake CLI (snow) がインストール済み
-REM   - Cortex Code CLI (cortex) がインストール済み
+REM   - CoCo CLI (cortex) がインストール済み
 REM
 REM === 起動方法 ===
 REM   エクスプローラーからダブルクリック / コマンドプロンプトで実行
@@ -55,7 +55,7 @@ REM メインフロー
 REM =============================================================================
 echo.
 echo ============================================================
-echo  Cortex Code CLI 自動セットアップ (Windows)
+echo  CoCo CLI 自動セットアップ (Windows)
 echo ============================================================
 echo.
 
