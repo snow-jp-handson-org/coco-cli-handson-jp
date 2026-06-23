@@ -425,7 +425,10 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.SNOWRETAIL_HANDSON_AGENT という名前で作�
 
 ---
 
-## Step 9: MCPでデータ全体像を可視化
+## [オプショナル] Step 9: MCPでデータ全体像を可視化
+
+drawio.ioを利用するため、ローカル環境にneo4jが求められるため, ユーザによっては利用できない場合がございます。
+したがって、こちらの章は**オプショナル**とします。
 
 ### 目的
 draw.io MCPを使って、ハンズオン全体のデータ全体像をER図として可視化する。
