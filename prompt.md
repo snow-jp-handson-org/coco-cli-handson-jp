@@ -1,10 +1,10 @@
-# Cortex Code プロンプト集
+# Snowflake CoCo プロンプト集
 
 ## このファイルの使い方
 
-各ステップのプロンプトを **Cortex Code CLI** にコピー＆ペーストして実行します。
+各ステップのプロンプトを **CoCo CLI** にコピー＆ペーストして実行します。
 
-**Cortex Code CLI のはじめかた**:
+**CoCo CLI のはじめかた**:
 1. コマンドプロンプトまたはターミナルで `cortex` コマンドを実行
 2. CLI 上のテキストボックスにプロンプトを貼り付けて Enter
 
@@ -29,12 +29,12 @@ snow connection list
 snow connection test -c <接続名>
 ```
 
-- 0-3. Cortex Code CLI インストール確認
+- 0-3. CoCo CLI インストール確認
 ```
 cortex --version
 ```
 
-- 0-4. Cortex Code CLI 起動
+- 0-4. CoCo CLI 起動
 ```
 cortex
 ```
@@ -152,7 +152,7 @@ AGENTS.mdの Before/After 比較でソフトガバナンスの効果を体感す
 
 ### 目的
 
-Cortex Code CLI のバックグラウンド実行機能を、汎用 Subagent → 専門化された Custom Agent → 並列 Swarm の順で体験します。
+CoCo CLI のバックグラウンド実行機能を、汎用 Subagent → 専門化された Custom Agent → 並列 Swarm の順で体験します。
 
 ### 事前確認
 
@@ -341,7 +341,7 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.SNOWRETAIL_HANDSON_AGENT という名前で作�
 /skill-development について教えて。どんな機能があるか一覧で説明して
 ```
 
-期待される応答: Cortex Code がネイティブ提供する skill-development スキルの4つの機能（CREATE / SUMMARIZE / AUDIT / REFACTOR）が説明されます。Snowflake が公式に Skill 開発ワークフローをサポートしていることが確認できます。
+期待される応答: CoCo がネイティブ提供する skill-development スキルの4つの機能（CREATE / SUMMARIZE / AUDIT / REFACTOR）が説明されます。Snowflake が公式に Skill 開発ワークフローをサポートしていることが確認できます。
 
 - 7-2. 独自ドメインSkillの新規作成（対話的に作成）
 ```
@@ -470,7 +470,7 @@ draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関
 - 10-1. Plugin の作成
 ```
 今日のセッションで作成した内容（Skills、Hooks、Custom Agent、MCP設定）を
-1つの Cortex Code Plugin としてパッケージしてください。
+1つの CoCo Plugin としてパッケージしてください。
 Plugin名は snowretail-handson で、.cortex/plugins/ 配下に作成して。
 ```
 
