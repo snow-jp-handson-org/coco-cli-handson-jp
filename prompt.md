@@ -332,38 +332,18 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.SNOWRETAIL_HANDSON_AGENT という名前で作�
 ## Step 7: Skillでレポート生成を標準化
 
 ### 目的
-Skillの構造を理解し、カスタマイズして再実行する。チーム共有の効果を理解する。
+スキル開発機能を利用して、スキルを開発する。
 
 ### プロンプト
 
-- 7-1. Skillの構造確認
-```
-@.cortex/skills/monthly-sales-report/SKILL.md を読んで、このSkillが何をするものか、どんな手順で動くか説明して
-```
-
-- 7-2. Skillを実行
-```
-MART_SALESの最新データで月次売上分析レポートを作成しHTMLで出力して
-```
-
-- 7-3. Skillをカスタマイズ
-```
-このSkillのレポートに「EC/実店舗チャネル比較」のセクションを追加して、SKILL.mdを更新して
-```
-
-- 7-4. カスタマイズ後に再実行して違いを確認
-```
-更新したSKILL.mdを使って、もう一度月次売上分析レポートを作成しHTMLで出力して
-```
-
-- 7-5. ネイティブ Skill 開発機能の確認
+- 7-1. ネイティブ Skill 開発機能の確認
 ```
 /skill-development について教えて。どんな機能があるか一覧で説明して
 ```
 
 期待される応答: Cortex Code がネイティブ提供する skill-development スキルの4つの機能（CREATE / SUMMARIZE / AUDIT / REFACTOR）が説明されます。Snowflake が公式に Skill 開発ワークフローをサポートしていることが確認できます。
 
-- 7-6. 独自ドメインSkillの新規作成（対話的に作成）
+- 7-2. 独自ドメインSkillの新規作成（対話的に作成）
 ```
 新しい Skill を作成したい。以下の要件で作って：
 - 名前: my-category-insight
@@ -381,7 +361,7 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 >
 > Skill名も自由に変更してください（例: `food-trend-report`, `electronics-seasonal`, `apparel-channel-compare`）。
 
-- 7-7. 自作Skillの実行テスト
+- 7-3. 自作Skillの実行テスト
 ```
 /my-category-insight Skill を使って、「食品」カテゴリの分析レポートを出して
 ```
@@ -392,7 +372,7 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 > - `food-trend-report Skill を使って、今月の食品トレンドレポートを出して`
 > - `electronics-seasonal Skill を使って、家電の季節分析を出して`
 
-- 7-8. Skillの改良（参加者ごとのカスタマイズ）
+- 7-4. Skillの改良（参加者ごとのカスタマイズ）
 ```
 /my-category-insight Skill に「競合カテゴリとの比較」セクションを追加して、SKILL.mdを更新して
 ```
