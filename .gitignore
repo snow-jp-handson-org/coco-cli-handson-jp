@@ -2,3 +2,5 @@
 profiles/*
 semantic_view/*
 .cortex/logs/*
+.temp/*
+.snowflake/*

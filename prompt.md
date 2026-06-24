@@ -1,10 +1,10 @@
-# Cortex Code プロンプト集
+# Snowflake CoCo プロンプト集
 
 ## このファイルの使い方
 
-各ステップのプロンプトを **Cortex Code CLI** にコピー＆ペーストして実行します。
+各ステップのプロンプトを **CoCo CLI** にコピー＆ペーストして実行します。
 
-**Cortex Code CLI のはじめかた**:
+**CoCo CLI のはじめかた**:
 1. コマンドプロンプトまたはターミナルで `cortex` コマンドを実行
 2. CLI 上のテキストボックスにプロンプトを貼り付けて Enter
 
@@ -14,7 +14,7 @@
 ### 目的
 本ハンズオン用サンプルデータの初期構築タスクの実行
 
-### コマンド
+#### 以下、ターミナルで実行するコマンド
 
 - 0-1. Snowflake CLI インストール確認
 ```
@@ -29,12 +29,12 @@ snow connection list
 snow connection test -c <接続名>
 ```
 
-- 0-3. Cortex Code CLI インストール確認
+- 0-3. CoCo CLI インストール確認
 ```
 cortex --version
 ```
 
-- 0-4. Cortex Code CLI 起動
+- 0-4. CoCo CLI 起動
 ```
 cortex
 ```
@@ -152,7 +152,7 @@ AGENTS.mdの Before/After 比較でソフトガバナンスの効果を体感す
 
 ### 目的
 
-Cortex Code CLI のバックグラウンド実行機能を、汎用 Subagent → 専門化された Custom Agent → 並列 Swarm の順で体験します。
+CoCo CLI のバックグラウンド実行機能を、汎用 Subagent → 専門化された Custom Agent → 並列 Swarm の順で体験します。
 
 ### 事前確認
 
@@ -241,9 +241,10 @@ Hooks のブロックスクリプトは bash 製のため、**macOS 環境での
 Windows 環境の方は 5-1（構造の読み解き）のみ実施し、5-2（発火デモ）は講師の画面で確認してください。
 
 macOS の方は、`samples/settings.json` を `.cortex/` にコピーして Hooks を有効化します。
+なお、 `!` を先頭につけることで、コマンドを透過的に実行することが可能です。
 
 ```
-cp samples/settings.json .cortex/settings.json
+!cp samples/settings.json .cortex/settings.json
 ```
 
 > Finder や VS Code 等の GUI でコピー＆ペーストしても OK です。
@@ -256,7 +257,7 @@ cp samples/settings.json .cortex/settings.json
 コピー後、以下で配置を確認します。
 
 ```
-ls .cortex/settings.json .cortex/hooks/
+!ls .cortex/settings.json .cortex/hooks/
 ```
 
 `settings.json` と `.cortex/hooks/` 配下の3本のスクリプトが見えていれば OK です。
@@ -289,7 +290,7 @@ Hooks を有効化済みの macOS 環境で、実際に書き込み SQL がブ�
 ## Step 6: Semantic View + Cortex AgentsでSI構築
 
 ### 目的
-LOB（営業・マーケ等）がSnowflake Intelligence（SI）で自然言語分析できる環境を作る。
+LOB（営業・マーケ等）がSnowflake CoWork で自然言語分析できる環境を作る。
 
 ### プロンプト
 
@@ -331,29 +332,57 @@ SNOWRETAIL_DB.SNOWRETAIL_SCHEMA.SNOWRETAIL_HANDSON_AGENT という名前で作�
 ## Step 7: Skillでレポート生成を標準化
 
 ### 目的
-Skillの構造を理解し、カスタマイズして再実行する。チーム共有の効果を理解する。
+スキル開発機能を利用して、スキルを開発する。
 
 ### プロンプト
 
-- 7-1. Skillの構造確認
+- 7-1. ネイティブ Skill 開発機能の確認
 ```
-@.cortex/skills/monthly-sales-report/SKILL.md を読んで、このSkillが何をするものか、どんな手順で動くか説明して
-```
-
-- 7-2. Skillを実行
-```
-MART_SALESの最新データで月次売上分析レポートを作成しHTMLで出力して
+/skill-development について教えて。どんな機能があるか一覧で説明して
 ```
 
-- 7-3. Skillをカスタマイズ
+期待される応答: CoCo がネイティブ提供する skill-development スキルの4つの機能（CREATE / SUMMARIZE / AUDIT / REFACTOR）が説明されます。Snowflake が公式に Skill 開発ワークフローをサポートしていることが確認できます。
+
+- 7-2. 独自ドメインSkillの新規作成（対話的に作成）
 ```
-このSkillのレポートに「EC/実店舗チャネル比較」のセクションを追加して、SKILL.mdを更新して
+新しい Skill を作成したい。以下の要件で作って：
+- 名前: my-category-insight
+- 目的: MART_SALES から指定カテゴリの売上・トレンド・前月比を分析し、1ページのマークダウンレポートを出力する
+- トリガー: カテゴリ分析, category insight, カテゴリレポート
+- 配置: .cortex/skills/ 配下
 ```
 
-- 7-4. カスタマイズ後に再実行して違いを確認
+期待される応答: skill-development の CREATE フローに従い、要件確認 → 構造提案 → SKILL.md 生成の対話が進みます。途中の承認ポイントで「OK」「進めて」等を入力して進めてください。
+
+> **💡 カスタマイズポイント**: 参加者ごとに異なるカテゴリ名や切り口を指定すると、全員が異なる Skill を作成できます。例：
+> - `「食品」カテゴリに特化した週次トレンド分析`
+> - `「家電」の季節別売上予測レポート`
+> - `「衣料」のチャネル比較ダッシュボード`
+>
+> Skill名も自由に変更してください（例: `food-trend-report`, `electronics-seasonal`, `apparel-channel-compare`）。
+
+- 7-3. 自作Skillの実行テスト
 ```
-更新したSKILL.mdを使って、もう一度月次売上分析レポートを作成しHTMLで出力して
+/my-category-insight Skill を使って、「食品」カテゴリの分析レポートを出して
 ```
+
+期待される応答: 作成した Skill が発火し、MART_SALES から指定カテゴリの売上データを集計したマークダウンレポートが出力されます。
+
+> **💡 カスタマイズポイント**: 7-6 で指定したカテゴリ名に合わせてプロンプトを変更してください。例：
+> - `food-trend-report Skill を使って、今月の食品トレンドレポートを出して`
+> - `electronics-seasonal Skill を使って、家電の季節分析を出して`
+
+- 7-4. Skillの改良（参加者ごとのカスタマイズ）
+```
+/my-category-insight Skill に「競合カテゴリとの比較」セクションを追加して、SKILL.mdを更新して
+```
+
+期待される応答: SKILL.md のワークフローに比較ロジックのステップが追加されます。
+
+> **💡 カスタマイズポイント**: 追加するセクションも自由に変えられます。例：
+> - `「前年同月比の成長率グラフ」セクションを追加して`
+> - `「売上下位5商品の改善提案」セクションを追加して`
+> - `「チャネル別の構成比変化」セクションを追加して`
 
 ---
 
@@ -391,12 +420,15 @@ MART_SALESの最新データで月次売上分析レポートを作成しHTMLで
 ```
 
 ```
-ダウンロードした画像 dashboard_template.jpg のデザインに合わせてダッシュボードを編集できますか？
+@step/streamlit にダウンロードした画像 dashboard_template.jpg のデザインに合わせてダッシュボードを編集できますか？
 ```
 
 ---
 
-## Step 9: MCPでデータ全体像を可視化
+## [オプショナル] Step 9: MCPでデータ全体像を可視化
+
+drawio.ioを利用するため、ローカル環境にneo4jが求められるため, ユーザによっては利用できない場合がございます。
+したがって、こちらの章は**オプショナル**とします。
 
 ### 目的
 draw.io MCPを使って、ハンズオン全体のデータ全体像をER図として可視化する。
@@ -418,7 +450,7 @@ draw.io MCPに接続する方法を教えて
 ```
 
 ```
-cortex mcp add drawio npx -- @drawio/mcp
+!cortex mcp add drawio npx -- @drawio/mcp
 ```
 
 - 9-2. ER図の作成
@@ -429,52 +461,48 @@ draw.io MCPの open_drawio_mermaid を使って、これらのテーブルの関
 
 ---
 
-## Step 10: 振り返り + Profileでチームに展開
+## Step 10: 振り返り + Pluginでチームに展開
 
 ### 目的
-今日作ったものをProfileで一括配布できることを理解する。
+今日作ったもの（Skills、Hooks、MCP設定、Custom Agent）を1つの Plugin としてパッケージし、チームメンバーに一括配布できることを理解する。
+
+> **Plugin とは**: Skills、Subagents、Hooks、MCP サーバーを1つのマニフェストにまとめたパッケージ。Git リポジトリで共有するだけで `cortex plugin install` 一発でチーム全員に展開できます。
 
 ### プロンプト
 
-- 10-1. セッションの振り返り
+- 10-1. Plugin の作成
 ```
-以下の Cortex Code の Profile のテンプレートに従って、今日のセッションで作成した内容 (カスタムスキル、MCP、Hooks、Connectionなど) を反映させた Profile ファイルを demo_profile.json という名前で作成してください。Profile ファイルは、.snowflake/cortex/profiles というフォルダを作成して配置して
-{
-  "name": "demo_profile",
-  "description": "",
-  "ownerTeam": "",
-  "version": "1",
-  "skillRepos": [
-    {
-      "ref": "",
-      "source": "",
-      "url": ""
-    }
-  ],
-  "mcpServers": {},
-  "commandRepos": [],
-  "systemPromptRepo": ,
-  "hooks": ,
-  "plugins": [],
-  "envVars": {},
-  "settingsOverrides": {},
-  "localModified": false,
-  "sourceConnection": "",
-  "fetchedAt": ""
-}
+今日のセッションで作成した内容（Skills、Hooks、Custom Agent、MCP設定）を
+1つの CoCo Plugin としてパッケージしてください。
+Plugin名は snowretail-handson で、.cortex/plugins/ 配下に作成して。
 ```
 
-- 10-2. Profile紹介
+期待される応答: Plugin のディレクトリ構造（`.cortex-plugin/plugin.json`、skills/、agents/、hooks/ 等）とマニフェストが自動生成されます。
+
+- 10-2. Plugin の検証
 ```
-demo_profile.jsonを読んで、何がパッケージされているか説明して
+!cortex plugin validate .cortex/plugins/snowretail-handson/
 ```
 
-- 10-3. Profileが正常に認識されていることを確認
+期待される応答: マニフェストと各コンポーネント（Skills、Agents、Hooks、MCP）の検証結果が表示されます。エラーがなければ OK です。
+
+- 10-3. Plugin の再読み込み
 ```
-/profile list
+/reload-plugins
 ```
 
-- 10-4. Profileをデフォルトとして設定
+期待される応答: Plugin のリストが再読み込みされること。
+
+- 10-4. Plugin の読み込み確認
 ```
-/profile set-default demo_profile
+/plugin list
 ```
+
+期待される応答: snowretail-handson Plugin が一覧に表示され、active 状態であることが確認できます。
+
+- 10-5. Plugin の共有方法を確認
+```
+この Plugin を Git リポジトリで共有して、チームメンバーがインストールするまでの手順を教えて
+```
+
+期待される応答: `git push` → チームメンバーが `cortex plugin install <org>/<repo>` でインストールする流れが説明されます。
